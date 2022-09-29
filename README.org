@@ -1,0 +1,102 @@
+#+STARTUP: fold indent
+#+OPTIONS: tex:t toc:2 H:6 ^:{}
+
+#+TITLE: Introduction to Remote Computing
+#+AUTHOR: Derek Devnich
+
+* Orientation
+This is an introduction to the fundamental system administration skills a researcher will need when interacting with a Unix-like server. It is not an introduction to HPC or Containers; rather, it is intended to make explanations of HPC or Containers transparent.
+
+* Authentication
+1. Public keys and public key setup
+2. Windows problems and work-arounds
+3. RSA is Bad, and other cryptographic right answers
+
+* Using the terminal (SSH)
+1. Tracking your environment
+2. Shell commands
+3. Latency
+4. Using editors
+
+* Moving files (SFTP)
+1. Many parallel connections
+2. Managing multiple terminal (benefits, dangers, focus follows mouse)
+
+* Permissions
+1. Permission basics
+2. Changing permissions
+   1. Intuitive commands
+   2. Permission masks
+3. Owners and groups
+   1. Changing owners
+   2. Managing groups
+4. Passwords
+
+* File management
+1. find
+2. grep
+3. Writing information to files
+4. moving, copying, deleting
+5. making archives
+6. <database> dump
+
+* Getting files
+1. wget and curl
+2. git
+
+* Utilities
+1. df
+2. du
+3. top
+4. cron
+5. Installing better utilities (package managers)
+
+* Becoming Root
+1. sudo
+2. su
+3. With great power comes great responsibility
+
+* Starting and stopping processes
+1. OS level commands (e.g., kill)
+2. Utility level commands (e.g., mysql restart)
+3. Rebooting
+
+* When things go wrong
+1. Logs
+2. Testing
+3. Startup scripts and configuration
+4. Self-healing systems and the limits thereof
+
+* A very brief discussion of research computing
+1. High-Performance Computing (running discrete jobs)
+2. Containers (persistent environments)
+
+* References
+https://www.hpc-carpentry.org
+https://www.hpc-carpentry.org/community-lessons/
+https://carpentries-incubator.github.io/hpc-intro/
+
+
+* COMMENT How to export this document to other formats
+** Export to Markdown using Pandoc
+Do this if you want code syntax highlighting and a table of contents on Github.
+*** Generate generic Markdown file
+#+BEGIN_SRC bash
+pandoc README.org -o tmp.md
+#+END_SRC
+
+*** Edit generic Markdown file to remove illegal front matter
+1. Org directives
+2. Anything that isn't part of the document structure (e.g. TODO items)
+
+*** Generate Github Markdown with table of contents
+#+BEGIN_SRC bash
+pandoc -f markdown --toc --toc-depth=2 -s tmp.md -o README.md
+#+END_SRC
+
+*** Find and replace code block markers in final document
+#+BEGIN_EXAMPLE
+M-x qrr " {.python}" "python"
+M-x qrr " {.bash}" "bash"
+M-x qrr " example " fundamental
+#+END_EXAMPLE
