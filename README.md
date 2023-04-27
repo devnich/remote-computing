@@ -1,0 +1,164 @@
+- <a href="#orientation" id="toc-orientation"><span class="toc-section-number">1</span> Orientation</a>
+  - <a href="#why-are-we-here" id="toc-why-are-we-here"><span class="toc-section-number">1.1</span> Why are we here?</a>
+  - <a href="#lesson-audience" id="toc-lesson-audience"><span class="toc-section-number">1.2</span> Lesson Audience</a>
+- <a href="#lesson-outline" id="toc-lesson-outline"><span class="toc-section-number">2</span> Lesson Outline</a>
+  - <a href="#interacting-with-remote-servers" id="toc-interacting-with-remote-servers"><span class="toc-section-number">2.1</span> Interacting with Remote Servers</a>
+  - <a href="#managing-your-environment" id="toc-managing-your-environment"><span class="toc-section-number">2.2</span> Managing your environment</a>
+  - <a href="#system-administration-and-troubleshooting" id="toc-system-administration-and-troubleshooting"><span class="toc-section-number">2.3</span> System Administration and Troubleshooting</a>
+  - <a href="#a-very-brief-discussion-of-research-computing" id="toc-a-very-brief-discussion-of-research-computing"><span class="toc-section-number">2.4</span> A very brief discussion of research computing</a>
+- <a href="#references" id="toc-references"><span class="toc-section-number">3</span> References</a>
+  - <a href="#general-unix-and-unix-architecture" id="toc-general-unix-and-unix-architecture"><span class="toc-section-number">3.1</span> General Unix and Unix Architecture</a>
+  - <a href="#common-utilities" id="toc-common-utilities"><span class="toc-section-number">3.2</span> Common Utilities</a>
+  - <a href="#bash-shell" id="toc-bash-shell"><span class="toc-section-number">3.3</span> (Bash) Shell</a>
+  - <a href="#security" id="toc-security"><span class="toc-section-number">3.4</span> Security</a>
+  - <a href="#prior-art-related-carpentry-lessons" id="toc-prior-art-related-carpentry-lessons"><span class="toc-section-number">3.5</span> Prior Art (related Carpentry lessons)</a>
+
+# Orientation
+
+This is an introduction to the fundamental system administration skills a researcher will need when interacting with a Unix-like server. It is not an introduction to HPC or Containers; rather, it is intended to make explanations of HPC or Containers transparent.
+
+## Why are we here?
+
+Everyone becomes a system administrator eventually.
+
+No one wants this. We would all prefer that our tools "just work." The reality is that open science is done with open source tools, most open source tools were (and are) created on Unix-like systems \[1\], and those tools embed the philosophy and assumptions of their home systems. Novices are frequently surprised to discover that Python development (for example) is much more pleasant on Linux than on user-friendly Windows. This is because Guido van Rossum created Python as a scripting language for Unix servers; you can take the language out of the server, but you can't take the server out of the language. Other popular research programming languages (C, Perl, Java, R, et cetera) have similar origin stories: Born on Unix servers, best run on Unix-like servers, and disproportionately represented in the desktop world by machines running the Mac OS flavor of Unix.
+
+The programming languages are the tip of the iceberg: Most open science depends in some way on the Unix ecosystem. Many (most?) local file servers, research group databases, university computing clusters, and cloud services run Unix \[2\]. Using them effectively requires a hands-on understanding of Unix. Everyone becomes a system administrator eventually.
+
+1.  A "Unix-like" system is one that complies with the POSIX standard. It includes BSD Unix, Linux, Solaris, Mac OS, and others.
+2.  Specifically, they run the Unix-like Linux
+
+## Lesson Audience
+
+This workshop is an introduction to the skills a researcher needs to effectively use and manage a Unix server. It is for anyone who needs to work in a Unix environment, or who wants to get more out of their Unix-based tools. This includes activities such as:
+
+1.  Running a local file server
+2.  Working with remote databases
+3.  Running programs in an HPC or cloud environment
+4.  Troubleshooting weird installation and configuration issues
+5.  Backing up or syncing remote data
+
+The workshop is intended to complement the pre-existing Unix Shell Carpentry workshop. It emphasizes portable skills that are useful in any Unix environment. It is not intended to be an introduction to high-performance computing, containers, or any other specialized topic. Rather, the goal is to give the learners the knowledge and skills they need to tackle those specialized topics if and when they encounter them.
+
+(There are several Carpentry curricula on high-performance computing that partially overlap with this workshop. They are similarly structured in that they attempt to be self-contained and approachable for novices. As a result, each curriculum is a blend of Unix shell, system administration, and HPC-specific materials. Each of those topics is large enough to be its own workshop, and part of my motivation for proposing this workshop is to allow the specialized workshops to dedicate their full time to the specialized topics).
+
+# Lesson Outline
+
+## Interacting with Remote Servers
+
+### Authentication
+
+1.  Public key authentication
+2.  Creating public keys
+3.  Windows-specific issues
+4.  RSA is Bad, and other cryptographic right answers
+
+### Using the terminal
+
+1.  Connecting with SSH "The SSH protocol creates a secure tunnel through which you can transfer a bidirectional stream, and you can use that stream to connect any two processes you like. The most familiar two processes would be a shell (at the server) and an interactive terminal emulator (at the client). That's what you're using when you ssh to a server and type commands at the remote shell's prompt."
+    - <https://unix.stackexchange.com/a/116691>
+2.  Managing multiple connections and environments
+3.  Editing remote files through the terminal
+4.  Latency issues
+
+### Moving files to and from the remote server
+
+1.  SFTP features
+    1.  SFTP is implemented on top of SSH; it's available on any system that has SSH installed, and secure by default (or as secure as your current version of SSHy)
+    2.  Interactive: You can view remote file systems, modify file permissions, interrupt file transfer, resume file transfer, etc.
+2.  Alternatives to SFTP (SCP, FTP, etc.) "The scp protocol is outdated, inflexible and not readily fixed. We recommend the use of more modern protocols like sftp and rsync for file transfer instead."
+    - <https://www.openssh.com/txt/release-8.0>
+3.  Managing multiple connections, revisited (latency, the danger of "focus follows mouse")
+
+## Managing your environment
+
+### Permissions
+
+1.  Understanding permissions
+2.  Changing permissions with intuitive commands (e.g., "+r")
+3.  Permission masks
+
+### Configuration
+
+1.  Dot files (.profile, .bash_profile, .bashrc)
+2.  Environmental variables
+
+### File management
+
+1.  Searching with find and grep
+2.  Shell redirection
+3.  Making archives with tar
+4.  Database dumps
+5.  Naming things
+
+### Getting files
+
+1.  wget and curl
+2.  git
+
+## System Administration and Troubleshooting
+
+### Utilities
+
+1.  df, du, top, and cron
+2.  Installing better utilities with the package manager
+
+### Owners and Groups
+
+1.  Every process has an owner
+2.  Changing owners
+3.  Managing groups
+4.  Setting and changing passwords
+
+### Becoming Root
+
+1.  sudo and su
+2.  With great power comes great responsibility
+
+### Starting and stopping processes
+
+1.  OS level commands (e.g., kill)
+2.  Utility level commands (e.g., mysql restart)
+3.  Rebooting
+
+### Backups and file transfers with rsync
+
+### When things go wrong
+
+1.  Logs
+2.  Startup scripts
+3.  System testing
+
+## A very brief discussion of research computing
+
+1.  High-Performance Computing (running discrete jobs)
+2.  Containers (persistent environments)
+
+# References
+
+## General Unix and Unix Architecture
+
+1.  Learning Modern Linux (Hausenblas): <https://www.oreilly.com/library/view/learning-modern-linux/9781098108939/>
+2.  How Linux Works (Ward): <https://www.oreilly.com/library/view/how-linux-works/9781098128913/>
+3.  Your terminal is not a terminal: An Introduction to Streams (Costa): <https://lucasfcosta.com/2019/04/07/streams-introduction.html>
+
+## Common Utilities
+
+1.  GNU core utilities documentation (Free Software Foundation): <https://www.gnu.org/software/coreutils/manual/coreutils.html>
+2.  Omnibus catalog of command line utilities (SS64.com): <https://ss64.com/bash/>
+3.  System monitoring utilities (Debian project): <https://wiki.debian.org/SystemMonitoring>
+
+## (Bash) Shell
+
+1.  Bash Guide (Wooledge): <https://mywiki.wooledge.org/BashGuide>
+2.  Shell redirection operators (Oliveira): <https://www.redhat.com/sysadmin/linux-shell-redirection-pipelining>
+
+## Security
+
+1.  Cryptographic Right Answers (Ptacek et al.): <https://latacora.micro.blog/2018/04/03/cryptographic-right-answers.html>
+
+## Prior Art (related Carpentry lessons)
+
+1.  Using the Shell in a High-Performance Computing Context: <http://www.hpc-carpentry.org/hpc-shell/> Connecting to the remote HPC system (ssh)
+2.  Introduction to High-Performance Computing: <https://carpentries-incubator.github.io/hpc-intro/> Connecting to a remote HPC system (ssh), Transferring files (rsync)
+3.  Extra Unix Shell Material: <https://carpentries-incubator.github.io/shell-extras/> Working remotely (ssh), permissions, job control (background jobs)

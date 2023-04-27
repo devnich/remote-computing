@@ -1,0 +1,15 @@
+# Generated documentation
+*.odt
+*.docx
+*.~lock.*
+*.orig
+tmp.md
+*.html
+*.pdf
+*_draft.*
+
+# System files
+.DS_Store
+
+# Archives
+*.zip
