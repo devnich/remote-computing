@@ -55,7 +55,8 @@ The workshop is intended to complement the pre-existing Unix Shell Carpentry wor
 
 ### Using the terminal
 
-1.  Connecting with SSH "The SSH protocol creates a secure tunnel through which you can transfer a bidirectional stream, and you can use that stream to connect any two processes you like. The most familiar two processes would be a shell (at the server) and an interactive terminal emulator (at the client). That's what you're using when you ssh to a server and type commands at the remote shell's prompt."
+1.  Connecting with SSH
+    - "The SSH protocol creates a secure tunnel through which you can transfer a bidirectional stream, and you can use that stream to connect any two processes you like. The most familiar two processes would be a shell (at the server) and an interactive terminal emulator (at the client). That's what you're using when you ssh to a server and type commands at the remote shell's prompt."
     - <https://unix.stackexchange.com/a/116691>
 2.  Managing multiple connections and environments
 3.  Editing remote files through the terminal
@@ -64,9 +65,10 @@ The workshop is intended to complement the pre-existing Unix Shell Carpentry wor
 ### Moving files to and from the remote server
 
 1.  SFTP features
-    1.  SFTP is implemented on top of SSH; it's available on any system that has SSH installed, and secure by default (or as secure as your current version of SSHy)
-    2.  Interactive: You can view remote file systems, modify file permissions, interrupt file transfer, resume file transfer, etc.
-2.  Alternatives to SFTP (SCP, FTP, etc.) "The scp protocol is outdated, inflexible and not readily fixed. We recommend the use of more modern protocols like sftp and rsync for file transfer instead."
+    - SFTP is implemented on top of SSH; it's available on any system that has SSH installed, and secure by default (or as secure as your current version of SSHy)
+    - Interactive: You can view remote file systems, modify file permissions, interrupt file transfer, resume file transfer, etc.
+2.  Alternatives to SFTP (SCP, FTP, etc.)
+    - "The scp protocol is outdated, inflexible and not readily fixed. We recommend the use of more modern protocols like sftp and rsync for file transfer instead."
     - <https://www.openssh.com/txt/release-8.0>
 3.  Managing multiple connections, revisited (latency, the danger of "focus follows mouse")
 
@@ -159,6 +161,12 @@ The workshop is intended to complement the pre-existing Unix Shell Carpentry wor
 
 ## Prior Art (related Carpentry lessons)
 
-1.  Using the Shell in a High-Performance Computing Context: <http://www.hpc-carpentry.org/hpc-shell/> Connecting to the remote HPC system (ssh)
-2.  Introduction to High-Performance Computing: <https://carpentries-incubator.github.io/hpc-intro/> Connecting to a remote HPC system (ssh), Transferring files (rsync)
-3.  Extra Unix Shell Material: <https://carpentries-incubator.github.io/shell-extras/> Working remotely (ssh), permissions, job control (background jobs)
+1.  Using the Shell in a High-Performance Computing Context: <http://www.hpc-carpentry.org/hpc-shell/>
+    - Connecting to the remote HPC system (ssh)
+2.  Introduction to High-Performance Computing: <https://carpentries-incubator.github.io/hpc-intro/>
+    - Connecting to a remote HPC system (ssh)
+    - Transferring files (rsync)
+3.  Extra Unix Shell Material: <https://carpentries-incubator.github.io/shell-extras/>
+    - Working remotely (ssh)
+    - Permissions
+    - Job control (background jobs)
